@@ -12,7 +12,7 @@ class BasicPhrases extends StatefulWidget {
 }
 
 class _BasicPhrasesState extends State<BasicPhrases> {
-  final List<String> data = [
+  final List<String> data = <String>[
     'da',
     'nu',
     'fix',
