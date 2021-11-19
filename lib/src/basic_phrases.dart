@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
+import '../consts/choice_brain.dart';
+
+ChoiceBrain choiceBrain = ChoiceBrain();
+
 class BasicPhrases extends StatefulWidget {
   const BasicPhrases({
     Key? key,
@@ -13,15 +17,11 @@ class BasicPhrases extends StatefulWidget {
 }
 
 class _BasicPhrasesState extends State<BasicPhrases> {
-  Future<void> playerS() async {
+  Future<void> playerS(int index) async {
     final AudioPlayer player = AudioPlayer();
-    // final List<Future<Duration?>> duration = <Future<Duration?>>[
-    //   player.setUrl('https://www.pacdv.com/sounds/voices/okay-7.wav'),
-    // ];
+    player.setUrl(choiceBrain.choose[index].audio);
     player.play();
   }
-
-  final List<String> data = <String>['okay', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
 
   @override
   Widget build(BuildContext context) {
@@ -32,28 +32,36 @@ class _BasicPhrasesState extends State<BasicPhrases> {
       ),
       body: GridView.builder(
           physics: const BouncingScrollPhysics(),
-          itemCount: data.length,
+          itemCount: choiceBrain.choose.length,
           padding: const EdgeInsetsDirectional.all(16.0),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 16.0,
+            crossAxisSpacing: 16.0,
           ),
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
               onTap: () {
                 setState(() {
-                  playerS();
+                  playerS(index);
                 });
               },
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.amber,
+                  gradient: const LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: <Color>[
+                      Colors.blue,
+                      Colors.lightBlueAccent,
+                    ],
+                  ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Text(
-                  data[index],
+                  choiceBrain.choose[index].text,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
