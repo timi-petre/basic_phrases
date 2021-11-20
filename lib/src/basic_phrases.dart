@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
-import '../consts/choice_brain.dart';
-
-ChoiceBrain choiceBrain = ChoiceBrain();
+import 'choice_brain.dart';
 
 class BasicPhrases extends StatefulWidget {
   const BasicPhrases({
@@ -17,6 +15,7 @@ class BasicPhrases extends StatefulWidget {
 }
 
 class _BasicPhrasesState extends State<BasicPhrases> {
+  final ChoiceBrain choiceBrain = ChoiceBrain();
   Future<void> playerS(int index) async {
     final AudioPlayer player = AudioPlayer();
     player.setAsset(choiceBrain.choose[index].audio);
