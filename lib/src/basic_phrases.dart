@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
-import '../consts/choice_brain.dart';
+import 'choice_brain.dart';
 
 ChoiceBrain choiceBrain = ChoiceBrain();
 
