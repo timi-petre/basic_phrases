@@ -25,7 +25,7 @@ class _BasicPhrasesState extends State<BasicPhrases> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(backgroundColor: Colors.lightBlueAccent,
         title: Text(widget.title),
         centerTitle: true,
       ),
@@ -49,10 +49,10 @@ class _BasicPhrasesState extends State<BasicPhrases> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
                     colors: <Color>[
-                      Colors.blue,
+                      Colors.white,
                       Colors.lightBlueAccent,
                     ],
                   ),
