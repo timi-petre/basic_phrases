@@ -25,7 +25,8 @@ class _BasicPhrasesState extends State<BasicPhrases> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.lightBlueAccent,
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlueAccent,
         title: Text(widget.title),
         centerTitle: true,
       ),
